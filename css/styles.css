@@ -1,0 +1,84 @@
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    overscroll-behavior: none;
+  }
+
+  main > :first-child {
+    margin-top: 0 !important;
+  }
+
+  main > :last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hero: imagen de fondo con degradado oscuro para que el texto claro se lea */
+.hero-bg {
+  position: relative;
+  isolation: isolate;
+  background-image: url("../assets/img/fondo-hero.jpeg");
+  background-size: cover;
+  background-position: center 55%;
+}
+
+.hero-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to top, rgba(17, 17, 17, 0.7) 0%, rgba(17, 17, 17, 0) 35%),
+    linear-gradient(
+      100deg,
+      rgba(17, 17, 17, 0.8) 0%,
+      rgba(17, 17, 17, 0.55) 45%,
+      rgba(17, 17, 17, 0.2) 75%,
+      rgba(17, 17, 17, 0.05) 100%
+    );
+}
+
+/* En mobile el texto ocupa todo el ancho: velo más parejo */
+@media (max-width: 1023px) {
+  .hero-bg::before {
+    background: rgba(17, 17, 17, 0.6);
+  }
+}
+
+/* Navbar: grande arriba, se achica al scrollear (clase .is-scrolled desde js/main.js) */
+.site-header__bar {
+  height: 6rem;
+  transition: height 0.25s ease;
+}
+
+.site-header__logo {
+  height: 5rem;
+  transition: height 0.25s ease;
+}
+
+@media (min-width: 768px) {
+  .site-header__bar {
+    height: 7rem;
+  }
+
+  .site-header__logo {
+    height: 6rem;
+  }
+}
+
+.site-header.is-scrolled .site-header__bar {
+  height: 4rem;
+}
+
+.site-header.is-scrolled .site-header__logo {
+  height: 3rem;
+}
