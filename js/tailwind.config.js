@@ -143,6 +143,14 @@ tailwind.config = {
             "fontWeight": "800"
           }
         ],
+        "headline-xl": [
+          "44px",
+          {
+            "lineHeight": "48px",
+            "letterSpacing": "-0.03em",
+            "fontWeight": "900"
+          }
+        ],
         "headline-lg": [
           "36px",
           {

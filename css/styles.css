@@ -5,8 +5,18 @@
     padding: 0;
   }
 
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
     overscroll-behavior: none;
+    overflow-x: clip;
+  }
+
+  /* Que el navbar fijo no tape el título al saltar a una sección */
+  section[id] {
+    scroll-margin-top: 4.5rem;
   }
 
   main > :first-child {
@@ -56,12 +66,12 @@
 
 /* Navbar: grande arriba, se achica al scrollear (clase .is-scrolled desde js/main.js) */
 .site-header__bar {
-  height: 6rem;
+  height: 5rem;
   transition: height 0.25s ease;
 }
 
 .site-header__logo {
-  height: 5rem;
+  height: 4rem;
   transition: height 0.25s ease;
 }
 
@@ -81,4 +91,34 @@
 
 .site-header.is-scrolled .site-header__logo {
   height: 3rem;
+}
+
+/* Menú hamburguesa (mobile / tablet) */
+.mobile-menu {
+  max-height: calc(100dvh - 5rem);
+  overflow-y: auto;
+}
+
+.site-header.is-scrolled .mobile-menu {
+  max-height: calc(100dvh - 4rem);
+}
+
+/* FAQ: acordeón con <details> */
+.faq-item summary {
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .site-header__bar,
+  .site-header__logo {
+    transition: none;
+  }
 }
